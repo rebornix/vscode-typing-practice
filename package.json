@@ -1,0 +1,68 @@
+{
+	"name": "typing-practice",
+	"displayName": "Typing Practice",
+	"description": "Typing Practice with source code in your projects",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.60.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "*",
+		"onCommand:typing-practice.startTypingPracticeFromCursor"
+	],
+    "publisher": "rebornix",
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "typing-practice.startTypingPracticeFromCursor",
+				"title": "Start Typing Practice From Cursor"
+			},
+            {
+                "command": "typing-practice.endTypingPractice",
+                "title": "End Typing Practice"
+            }
+		],
+        "keybindings": [
+            {
+                "key": "Backspace",
+                "command": "typing-practice.backspace",
+                "when": "editorTextFocus && typing-practice.active"
+            },
+            {
+                "key": "Delete",
+                "command": "typing-practice.delete",
+                "when": "editorTextFocus && typing-practice.active"
+            },
+            {
+                "key": "Tab",
+                "command": "typing-practice.tab",
+                "when": "editorTextFocus && typing-practice.active"
+            }
+        ]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.63.0",
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@typescript-eslint/eslint-plugin": "^5.1.0",
+		"@typescript-eslint/parser": "^5.1.0",
+		"eslint": "^8.1.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.3",
+		"typescript": "^4.4.4",
+		"@vscode/test-electron": "^1.6.2"
+	}
+}
